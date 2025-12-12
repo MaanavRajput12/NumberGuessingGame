@@ -1,0 +1,3 @@
+com\example\NumberGuessingGame\NumberGuessingGameApplication.class
+com\example\NumberGuessingGame\Model\GameState.class
+com\example\NumberGuessingGame\Controller\GameController.class

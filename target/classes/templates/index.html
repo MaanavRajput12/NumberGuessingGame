@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>NUMBER GUESSING GAME</h1>
+
+        <div class="status">
+            <p><strong>Range:</strong> 
+                <span th:text="${min}"></span> - <span th:text="${max}"></span>
+            </p>
+            <p><strong>Attempts left:</strong> 
+                <span th:text="${gameState.attemptsLeft}">0</span>
+            </p>
+            <p><strong>Rounds played:</strong> 
+                <span th:text="${gameState.roundsPlayed}">0</span>
+            </p>
+            <p><strong>Score:</strong> 
+                <span th:text="${gameState.score}">0</span>
+            </p>
+        </div>
+
+        <div class="lastFeedback" th:if="${gameState.lastFeedback != null}">
+            <p th:text="${gameState.lastFeedback}"></p>
+        </div>
+
+        <form th:action="@{/guess}" method="post" class="guess-form">
+            <label for="guess">Enter Your Guess:</label>
+            <input id="guess" name="guess" type="number" 
+                th:attr="min=${min}, max=${max}" required>
+            <button type="submit">Guess</button>
+        </form>
+
+        <form th:action="@{/newround}" method="post" style="display:inline-block; margin-right:10px;">
+            <button type="submit">New Round</button>
+        </form>
+
+        <form th:action="@{/restart}" method="post" style="display:inline-block;">
+            <button type="submit">Restart Game</button>
+        </form>
+    </div>
+
+</body>
+</html>
